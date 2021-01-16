@@ -34,7 +34,13 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <Swiper autoplay={true} className="swiper-view">
+        <Swiper
+          indicator-dots={true}
+          indicator-active-color='#ffffff'
+          indicator-color='rgba(256, 256, 256, .3)'
+          autoplay={true}
+          className="swiper-view"
+        >
           {["新手指引", "升级公告"].map((text) =>
             <SwiperItem>
               <View className="swiper-item">{text}</View>
