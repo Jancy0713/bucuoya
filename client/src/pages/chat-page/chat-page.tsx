@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
-import Taro, { Config } from '@tarojs/taro'
+import Taro, { Config, getCurrentInstance } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './chat-page.scss'
 
+type Option = Partial<Record<keyof IOptions, string>>
+interface IOptions {
+  id: string
+}
+interface IState {
+  id: string
+}
 export default class ChatPage extends Component {
+  $instance = getCurrentInstance()
 
-  componentWillMount () { }
+  state: IState
+  componentWillMount () {
+    const options = this.$instance.router?.params as Option
+    this.setState({
+      id: options.id,
+    })
+  }
 
   componentDidMount () { }
 
@@ -18,7 +32,7 @@ export default class ChatPage extends Component {
   render () {
     return (
       <View className='index'>
-        喵喵喵
+        {this.state.id}
       </View>)
   }
 }

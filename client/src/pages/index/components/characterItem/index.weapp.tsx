@@ -29,10 +29,15 @@ export default class Index extends Component {
 
   componentDidHide() {}
 
+  handleTapNavToChatPage = (id) => {
+    Taro.navigateTo({
+      url: `/pages/chat-page/chat-page?id=${id}`
+    })
+  }
 
   render() {
     return (
-      <View className='character-wrap'>
+      <View className='character-wrap' onClick={() => this.handleTapNavToChatPage(this.props.girlInfo._id)}>
         <Image className='character-logo' src={this.props.girlInfo.logoList[0]} mode='aspectFit'></Image>
         <View className="character-text">
           <View className='character-name'>{this.props.girlInfo.name}</View>
